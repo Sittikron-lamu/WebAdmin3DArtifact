@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>Firebase Login</title>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-auth.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="index.js"></script>
+
+</head>
+<body>
+
+  <div class="main-div">
+    <h3>BU3dmodel Application Login</h3>
+    <input type="email" placeholder="Email..." id="email" />
+    <input type="password" placeholder="Password..." id="password" />
+
+    <button onclick="signIn()" id="signIn">Sign in</button><br>
+    <button onclick="signUp()" id="signUp">Sign Up</button><br>
+    <button onclick="signOut()" id="signOut">Sign Out</button>
+  </div>
+
+
+</body>
+</html>

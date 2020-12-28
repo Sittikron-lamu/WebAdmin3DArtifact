@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Home</title>
+    
+
+    
+    <head>
+        <div class="container">
+            <div class="menu">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="permanent.html">Permanent Exhibition</a></li>
+                    <li><a href="location.html">Location</a></li>
+                    <li><a href="openinghours.html">Opening Hours</a></li>
+                    <li><a href="gettinghere.html">Getting Here</a></li>
+                    <li><a href="visitor.html">Visitor's Regulation</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+                
+            <div class="banner">
+                <h1>แก้ไขข้อมูลภายในหน้าของ การเดินทาง (Getting Here)</h1>
+                
+                <div class="container2">
+                    <span class="en">English</span>
+                    <input type="checkbox" class="check">
+                    <span class="th">Thai</span><br>
+                    <br><h1 id="imgOne" class="urlImg" >URL</h1>
+                    <br><h1>Put URL Here</h1>
+                    <textarea class="inputPepega" type="text" id="imgUrl1" placeholder="URL Images"></textarea> <br>
+                    <br><button id="imgBtn">Update Image</button>
+                    <div class="content contentEN">
+                        <h1 id="bigOne">TEST 1</h1>
+                        <textarea class="Pepega" type="text" id="getOne" placeholder="perma1" ></textarea>
+                        <br><button  id="updateEN">Update Button</button>
+                    </div>
+                    <div class="content contentTH">
+                        <h1 id="bigTwo">TEST 3</h1>
+                        <textarea class="Pepega" type="text" id="getTwo" placeholder="perma2" ></textarea>
+                        <br><button  id="updateTH">Update Button</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </head>
+    <body>
+        
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
+
+            <script>
+                // Your web app's Firebase configuration
+                // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+                var firebaseConfig = {
+                    apiKey: "AIzaSyCAi-a0MpKAT6c8TnJgeO5aB5_NHss3wVw",
+                    authDomain: "bu3dmodel.firebaseapp.com",
+                    databaseURL: "https://bu3dmodel.firebaseio.com",
+                    projectId: "bu3dmodel",
+                    storageBucket: "bu3dmodel.appspot.com",
+                    messagingSenderId: "879866936711",
+                    appId: "1:879866936711:web:5e37cc236e87b2bdc22722",
+                    measurementId: "G-G5L3KPFHYX"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+
+                showData();
+
+                var get1,get2;
+
+                function showData() {
+                    var imgOne = document.getElementById('imgOne');
+                    var dbRef = firebase.database().ref().child('Image').child('gettinghere').child('getting_1');
+                    dbRef.on('value', snap => imgOne.innerText = snap.val());
+                    var imgUrl1 = document.getElementById('imgUrl1');
+                    var dbRef = firebase.database().ref().child('Image').child('gettinghere').child('getting_1');
+                    dbRef.on('value', snap => imgUrl1.innerText = snap.val());
+
+                    var bigOne = document.getElementById('bigOne');
+                    var dbRef = firebase.database().ref().child('GettingHere').child('gettinghere');
+                    dbRef.on('value', snap => bigOne.innerText = snap.val());
+                    var textArea1 = document.getElementById('getOne');
+                    var dbRef = firebase.database().ref().child('GettingHere').child('gettinghere');
+                    dbRef.on('value', snap => textArea1.innerText = snap.val());
+                    
+                    var bigTwo = document.getElementById('bigTwo');
+                    var dbRef = firebase.database().ref().child('Getting Here_TH').child('gettinghere_text');
+                    dbRef.on('value', snap => bigTwo.innerText = snap.val());
+                    var textArea2 = document.getElementById('getTwo');
+                    var dbRef = firebase.database().ref().child('Getting Here_TH').child('gettinghere_text');
+                    dbRef.on('value', snap => textArea2.innerText = snap.val());
+
+                    
+                }
+
+
+                function Ready() {
+                    get1 = document.getElementById('getOne').value;
+                    get2 = document.getElementById('getTwo').value;
+                    pic1 = document.getElementById('imgUrl1').value;
+                    
+                }
+
+                document.getElementById('imgBtn').onclick = function (){
+                    Ready();
+                    firebase.database().ref().child('Image').child('gettinghere').update({
+                        getting_1: pic1
+                    })
+
+                }
+
+                    
+                document.getElementById('updateEN').onclick = function() {
+                    Ready();
+                    firebase.database().ref('GettingHere').update({
+                        gettinghere: get1      
+            
+                    });
+                }
+
+                document.getElementById('updateTH').onclick = function() {
+                    Ready();
+                    firebase.database().ref('Getting Here_TH').update({
+                        gettinghere_text: get2     
+            
+                    });
+                }
+            </script>
+        
+        
+
+        
+        </script>       
+        
+                 
+    </body>
+</html>
